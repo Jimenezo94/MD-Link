@@ -1,0 +1,29 @@
+{
+  "name": "md-links",
+  "version": "0.1.0",
+  "description": "## Índice",
+  "main": "./src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jimenezo94/bog001-md-links.git"
+  },
+  "keywords": [],
+  "author": "Juliana Jimenez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jimenezo94/bog001-md-links/issues"
+  },
+  "homepage": "https://github.com/Jimenezo94/bog001-md-links#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.3.3"
+  },
+  "bin": "./index.js"
+}
