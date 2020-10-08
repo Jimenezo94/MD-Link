@@ -1,17 +1,8 @@
-/*module.exports = () => {
-  
-};*/
-/*const os = require ('os')
-
-let cpu = os.cpus();
-let sistema = os.platform();
-let usuario = os.hostname(); 
-
-console.log(usuario);
-//console.log(cpu);
-console.log(sistema);*/
-
-
-
-console.log('holi')
-
+#!/usr/bin/env node 
+const contenido = require('./app.js');
+let h = process.argv[2]
+//console.log(h)
+//console.log(typeof(process.argv[2]))
+/*console.log(process.argv)*/
+//console.log(process.argv[2 ])
+contenido.mdLinks(h);
