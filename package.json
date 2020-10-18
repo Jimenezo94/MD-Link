@@ -21,9 +21,15 @@
   },
   "homepage": "https://github.com/Jimenezo94/bog001-md-links#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "chalk": "^2.4.2",
     "figlet": "^1.2.4",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20",
+    "marked": "^1.2.0"
   },
-  "bin": "./index.js"
+  "bin": "./index.js",
+  "devDependencies": {
+    "eslint": "^7.11.0"
+  }
 }
