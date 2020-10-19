@@ -5,7 +5,7 @@ const { mdLinks } = require('./app.js');
 //console.log(process.argv)
 let h = process.argv 
 //console.log(h.length)
-//console.log(h)
+//console.log(h[3] + h[4])
 //console.log(typeof(process.argv[2]))
 //console.log(process.argv)
 //console.log(process.argv[2 ])
@@ -19,14 +19,19 @@ if(h.length == 4) {
         //console.log('entro a validate')
         //console.log(revisar)
 
-        }
+    }   
     else if  ('--stats' == h[3]) {
         medir = true
         mdLinks (h[2], revisar, medir)
-        console.log('entro a states') 
-        console.log(revisar)
-
     }
        else {console.log ('err')}
     }
-    contenido.mdLinks(h[2], revisar , medir).then (console.log()) ;
+    else if (h.length == 5 ) { 
+        if('--validate --stats' == h[3] + ' ' + h[4]){ 
+        revisar = true
+        medir = true
+        mdLinks (h[2], revisar, medir) }
+    }
+else { contenido.mdLinks(h[2], revisar , medir).then (console.log()) ;
+
+}

@@ -3,6 +3,7 @@ const fs = require ('fs')
 const path = require('path'); 
 const marked = require("marked");
 const axios = require('axios');
+const { set } = require('lodash');
 
 const validar = (links) =>{  
 //return (resolve)=> {}
@@ -12,7 +13,7 @@ links.forEach(element => {
     
     axios.get(element.href)
 .then(response => { 
-    console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
+   console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
     
     /*nuevoArr.push(
         file = element.file;
@@ -21,13 +22,23 @@ links.forEach(element => {
         text = element.text; //objeto con los values que nos vamos a traer
         )*/
         c+=1
-        resolve();
+        resolve(links);
 })
 .catch(e => {
     // Capturamos los errores
 })
 })
-return nuevoArr;
+}
+
+const statsP = (links, op) =>  {
+    
+    console.log ('total : ' ,links.length)
+    let set = new Set( links.map( JSON.stringify ) )
+    let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
+
+console.log( 'unicos : ' ,arrSinDuplicaciones.length );
+//console.log(links)
+
 }
 module.exports = {
          
@@ -38,10 +49,9 @@ module.exports = {
           
        /* if (path.isAbsolute(rutaconvertida) == true ) { //deberia preguntar si es absoluta o relativa.
             //let extension = rutaconvertida.substring(rutaconvertida.length - 3, rutaconvertida.length)
-            //.log(extension)
+            //.log(extension)*/
 
-            */
-        return new Promise(function(resolve,reject){ 
+        return new Promise(function(resolve,reject){ //np es retorno de funcion md-link
             const links = [];
             function walkTokens(token) {// verifica el tipo de token, que en este caso es un link, y luego se incluyen links de tipo http para que los tome y tambien los de tipo https
                 if (token.type === 'link' && token.href.includes('http')) {
@@ -57,13 +67,16 @@ module.exports = {
                 fs.readFile(rutaconvertida, 'utf-8',(err,data) => {
                 //console.log(data)
                 marked(data, {walkTokens})
-        
-                if (op1 == true){
+            if (op1 == true){
                     validar(links)
                     //console.log(nuevoArr)
                     
-                    resolve(links)
-                } else {
+                    //resolve(links)
+                } 
+           if (op2 == true){
+                    return statsP(links )
+                }
+            if(op1  == false && op2 == false) {
                     
                 links.forEach(let = cadenas => 
                     { //console.log('elemento cadena de indice', cont ,  ' informacion:', cadenas )
@@ -71,6 +84,7 @@ module.exports = {
                                   
                     resolve(links)
             }
+        
             });
 
             } 
