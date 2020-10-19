@@ -13,21 +13,23 @@ links.forEach(element => {
     
     axios.get(element.href)
 .then(response => { 
-   console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
+   //console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
     
-    /*nuevoArr.push(
-        file = element.file;
-        href = element.href;
-        element.status=response.status;
-        text = element.text; //objeto con los values que nos vamos a traer
-        )*/
+    nuevoArr.push({element:element}
+        /*file = element.file;
+        href = element.href;*/
+        
+        //text = element.text; //objeto con los values que nos vamos a traer
+        )
         c+=1
-        resolve(links);
+        resolve(links, nuevoArr);
+        
 })
 .catch(e => {
     // Capturamos los errores
 })
 })
+console.log(nuevoArr, links)
 }
 
 const statsP = (links, op) =>  {
@@ -69,7 +71,7 @@ module.exports = {
                 marked(data, {walkTokens})
             if (op1 == true){
                     validar(links)
-                    //console.log(nuevoArr)
+                    //console.log(links)
                     
                     //resolve(links)
                 } 
