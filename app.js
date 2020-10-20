@@ -4,7 +4,32 @@ const path = require('path');
 const marked = require("marked");
 const axios = require('axios');
 const { set } = require('lodash');
-
+/*const validar = (links) =>{  
+    //return (resolve)=> {}
+    let nuevoArr=[]
+    let c=0
+    links.forEach(element => {
+        
+        axios.get(element.href)
+    .then(response => { 
+       console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
+        
+        //nuevoArr.push({element:element}
+            /*file = element.file;
+            href = element.href;
+            
+            //text = element.text; //objeto con los values que nos vamos a traer
+        
+            c+=1
+            resolve(links);
+            
+    })
+    .catch(e => {
+        // Capturamos los errores
+    })
+    })
+    
+    }*/
 const validar = (links) =>{ 
 //return (resolve)=> {}
 return new Promise((resolve) => {
@@ -115,15 +140,6 @@ module.exports = {
                 })
            }
 
-
-        
-            /*if (validar) {
-                validar(links).then(() => {
-                    resolve(links);
-                });
-            } else {
-                resolve(links);
-            }*/
             });
 
             } 
