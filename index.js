@@ -15,7 +15,12 @@ let medir = false
 if(h.length == 4) {
     if('--validate' == h[3]) {
         revisar = true 
-        mdLinks (h[2], revisar, medir).then (console.log()) ;
+        mdLinks (h[2], revisar, medir).then ((links) => {
+            links.forEach(element => {
+       console.log(element.file , element.href , element.ok , element.status , element.text)                
+            });
+        //    console.log(links)
+        })
         //console.log('entro a validate')
         //console.log(revisar)
 
