@@ -13,32 +13,32 @@ links.forEach(element => {
     
     axios.get(element.href)
 .then(response => { 
-   //console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
+   console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
     
-    nuevoArr.push({element:element}
+    //nuevoArr.push({element:element}
         /*file = element.file;
         href = element.href;*/
         
         //text = element.text; //objeto con los values que nos vamos a traer
-        )
+    
         c+=1
-        resolve(links, nuevoArr);
+        resolve(links);
         
 })
 .catch(e => {
     // Capturamos los errores
 })
 })
-console.log(nuevoArr, links)
+
 }
 
-const statsP = (links, op) =>  {
+const statsP = (links) =>  {
     
     console.log ('total : ' ,links.length)
-    let set = new Set( links.map( JSON.stringify ) )
-    let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
+    let set = new Set( links.map( JSON.stringify ) ) //linea que manipula los arrays con set
+    let Arrayunicos = Array.from( set ).map( JSON.parse ); // nos devuelve el JSON con los arrays unicos
 
-console.log( 'unicos : ' ,arrSinDuplicaciones.length );
+console.log( 'unicos : ' ,Arrayunicos.length );
 //console.log(links)
 
 }
@@ -68,7 +68,7 @@ module.exports = {
             if (path.extname(rutaconvertida) == '.md') {
                 fs.readFile(rutaconvertida, 'utf-8',(err,data) => {
                 //console.log(data)
-                marked(data, {walkTokens})
+                marked(data, {walkTokens})//
             if (op1 == true){
                     validar(links)
                     //console.log(links)

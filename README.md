@@ -4,7 +4,7 @@
 
 ## 1\. Preámbulo
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
+[Markdown](https:/s.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
 ligero muy popular entre developers. Es usado en muchísimas plataformas que
 manejan texto plano (GitHub, foros, blogs, ...), y es muy común
 encontrar varios archivos en ese formato en cualquier tipo de repositorio
@@ -22,4 +22,4 @@ algunas estadísticas.
 https://claseslaboratoria.slack.com/forgot/check
 https://claseslaboratoria.slack.com/forgot/check
 
-. https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-basicos-javascript/
+. https://www.discoduroderoer.es/ejerciciicos-javascript/
