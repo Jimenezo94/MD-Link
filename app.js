@@ -4,41 +4,16 @@ const path = require('path');
 const marked = require("marked");
 const axios = require('axios');
 const { set } = require('lodash');
-/*const validar = (links) =>{  
-    //return (resolve)=> {}
-    let nuevoArr=[]
-    let c=0
-    links.forEach(element => {
-        
-        axios.get(element.href)
-    .then(response => { 
-       console.log(links[c].file +" "+ links[c].href +" ok "+ response.status + " "+links[c].text)
-        
-        //nuevoArr.push({element:element}
-            /*file = element.file;
-            href = element.href;
-            
-            //text = element.text; //objeto con los values que nos vamos a traer
-        
-            c+=1
-            resolve(links);
-            
-    })
-    .catch(e => {
-        // Capturamos los errores
-    })
-    })
-    
-    }*/
+
 const validar = (links) =>{ 
-//return (resolve)=> {}
-return new Promise((resolve) => {
-    const promiseArray = [];
-    links.forEach((link) => {
-        promiseArray.push(new Promise(resolve => {
-            axios.get(link.href).then(response => {
-                link.status = response.status;
-                link.ok = true;
+
+    return new Promise((resolve) => {
+    const nuevoArr = [];
+    links.forEach((elements) => {
+        nuevoArr.push(new Promise(resolve => {
+            axios.get(elements.href).then(response => {
+                elements.status = response.status;
+                elements.ok = true;
                 resolve();
             }).catch(error => {
                 let status = 500; 
@@ -48,22 +23,21 @@ return new Promise((resolve) => {
                 if (error.request) {
                     status = 503; 
                 }
-                link.status = status;
-                link.ok = false;
+                elements.status = status;
+                elements.ok = false;
                 resolve();
             });
         }));
     });
 
-    //se resuelven todas las promesas al tiempo
-    Promise.all(promiseArray).then(() => {
-        console.log()
+    Promise.all(nuevoArr).then(() => {
+        
         resolve(links);
     })
 });
 }
 
-const statsP = (links,roto) =>  {
+const statsP = (links, roto) =>  {
     
     console.log ('total : ' ,links.length)
     let set = new Set( links.map( JSON.stringify ) ) //linea que manipula los arrays con set
@@ -125,7 +99,7 @@ module.exports = {
                 }
             if(op1  == false && op2 == false) {
                     
-                links.forEach(let = cadenas => 
+                links.forEach( cadenas => 
                     { //console.log('elemento cadena de indice', cont ,  ' informacion:', cadenas )
                     console.log(cadenas.file , cadenas.href, cadenas.text)})
                                   

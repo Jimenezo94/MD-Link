@@ -1,7 +1,6 @@
 #!/usr/bin/env node 
 const contenido = require('./app.js');
 const { mdLinks } = require('./app.js');
-
 //console.log(process.argv)
 let h = process.argv 
 //console.log(h.length)
@@ -11,7 +10,8 @@ let h = process.argv
 //console.log(process.argv[2 ])
 
 let revisar = false  //declaran para ser parametros de las funciones --v --s
-let medir = false
+let medir = false 
+
 if(h.length == 4) {
     if('--validate' == h[3]) {
         revisar = true 
